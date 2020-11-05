@@ -31,7 +31,6 @@ namespace EstudiantesApp
             btnAdd.Enabled = true;
             btnDelete.Enabled = false;
             btnUpdate.Enabled = false;
-
         }
 
         private void dgwStudents_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -39,12 +38,13 @@ namespace EstudiantesApp
             // evento cuadno se selecciona un registor de la tabla 
             if (dgwStudents.SelectedCells.Count > 0)
             {
-                txtCode.Text = dgwStudents.SelectedCells[0].Value.ToString();
-                txtNames.Text = dgwStudents.SelectedCells[1].Value.ToString();
-                txtLastNames.Text = dgwStudents.SelectedCells[2].Value.ToString();
-                txtEmail.Text = dgwStudents.SelectedCells[3].Value.ToString();
-                txtPhoneNumber.Text = dgwStudents.SelectedCells[4].Value.ToString();
-                txtCarrer.Text = dgwStudents.SelectedCells[5].Value.ToString();
+                
+                txtCode.Text = dgwStudents.Rows[dgwStudents.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
+                txtNames.Text = dgwStudents.Rows[dgwStudents.SelectedCells[0].RowIndex].Cells[1].Value.ToString();
+                txtLastNames.Text = dgwStudents.Rows[dgwStudents.SelectedCells[0].RowIndex].Cells[2].Value.ToString();
+                txtEmail.Text = dgwStudents.Rows[dgwStudents.SelectedCells[0].RowIndex].Cells[3].Value.ToString();
+                txtPhoneNumber.Text = dgwStudents.Rows[dgwStudents.SelectedCells[0].RowIndex].Cells[4].Value.ToString();
+                txtCarrer.Text = dgwStudents.Rows[dgwStudents.SelectedCells[0].RowIndex].Cells[5].Value.ToString();
 
                 txtCode.Enabled = false;
                 btnAdd.Enabled = false;
@@ -68,8 +68,47 @@ namespace EstudiantesApp
             btnUpdate.Enabled = false;
         }
 
+        private bool ValidateInputs()
+        {
+            if (string.IsNullOrEmpty(txtCode.Text))
+            {
+                MessageBox.Show("El Codigo no puede estar vacio");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(txtNames.Text))
+            {
+                MessageBox.Show("Los nombres no pueden estar vacios");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(txtLastNames.Text))
+            {
+                MessageBox.Show("Los apellidos no pueden estar vacios");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                MessageBox.Show("El correo no puede estar vacio");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(txtCarrer.Text))
+            {
+                MessageBox.Show("La carrera no puede estar vacia");
+                return false;
+            }
+
+
+            return true;
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (!ValidateInputs())
+                return;
+
             this.estudianteTableAdapter.Insert(
                 long.Parse(txtCode.Text),
                 txtNames.Text,
@@ -87,6 +126,9 @@ namespace EstudiantesApp
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (!ValidateInputs())
+                return;
+
             // se selecciona el row del estudiante seleccionado para ser actualizado
             EstudiantesBDDataSet.EstudianteRow selected_student = _currentStudents.Where(x => x.Codigo == long.Parse(txtCode.Text)).FirstOrDefault();
             selected_student.Nombres = txtNames.Text;
@@ -129,7 +171,6 @@ namespace EstudiantesApp
             else
                 MessageBox.Show($"No se elimino el estudiante con codigo {txtCode.Text}");
 
-            
         }
 
         private void txtCode_KeyPress(object sender, KeyPressEventArgs e)
