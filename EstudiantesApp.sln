@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstudiantesApp", "EstudiantesApp.csproj", "{466B6539-DBD5-415C-932C-36433216E94D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstudiantesApp.DataBase", "..\EstudiantesApp.DataBase\EstudiantesApp.DataBase.csproj", "{BAD92925-E7B8-4047-9D48-A55F1932CD1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{466B6539-DBD5-415C-932C-36433216E94D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{466B6539-DBD5-415C-932C-36433216E94D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{466B6539-DBD5-415C-932C-36433216E94D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAD92925-E7B8-4047-9D48-A55F1932CD1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAD92925-E7B8-4047-9D48-A55F1932CD1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAD92925-E7B8-4047-9D48-A55F1932CD1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAD92925-E7B8-4047-9D48-A55F1932CD1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
