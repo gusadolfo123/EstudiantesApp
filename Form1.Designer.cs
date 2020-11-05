@@ -30,34 +30,35 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgwStudents = new System.Windows.Forms.DataGridView();
-            this.estudiantesBDDataSet = new EstudiantesApp.EstudiantesBDDataSet();
-            this.estudianteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.estudianteTableAdapter = new EstudiantesApp.EstudiantesBDDataSetTableAdapters.EstudianteTableAdapter();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellidosDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.correoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.carreraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estudianteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.estudiantesBDDataSet = new EstudiantesApp.EstudiantesBDDataSet();
+            this.estudianteTableAdapter = new EstudiantesApp.EstudiantesBDDataSetTableAdapters.EstudianteTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.Codigo = new System.Windows.Forms.Label();
-            this.txtCode = new System.Windows.Forms.TextBox();
-            this.txtNames = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtLastNames = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
             this.txtCarrer = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtLastNames = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtNames = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCode = new System.Windows.Forms.TextBox();
+            this.Codigo = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwStudents)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estudiantesBDDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estudianteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estudiantesBDDataSet)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,20 +81,7 @@
             this.dgwStudents.ReadOnly = true;
             this.dgwStudents.Size = new System.Drawing.Size(716, 194);
             this.dgwStudents.TabIndex = 0;
-            // 
-            // estudiantesBDDataSet
-            // 
-            this.estudiantesBDDataSet.DataSetName = "EstudiantesBDDataSet";
-            this.estudiantesBDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // estudianteBindingSource
-            // 
-            this.estudianteBindingSource.DataMember = "Estudiante";
-            this.estudianteBindingSource.DataSource = this.estudiantesBDDataSet;
-            // 
-            // estudianteTableAdapter
-            // 
-            this.estudianteTableAdapter.ClearBeforeFill = true;
+            this.dgwStudents.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwStudents_CellClick);
             // 
             // codigoDataGridViewTextBoxColumn
             // 
@@ -137,8 +125,23 @@
             this.carreraDataGridViewTextBoxColumn.Name = "carreraDataGridViewTextBoxColumn";
             this.carreraDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // estudianteBindingSource
+            // 
+            this.estudianteBindingSource.DataMember = "Estudiante";
+            this.estudianteBindingSource.DataSource = this.estudiantesBDDataSet;
+            // 
+            // estudiantesBDDataSet
+            // 
+            this.estudiantesBDDataSet.DataSetName = "EstudiantesBDDataSet";
+            this.estudiantesBDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // estudianteTableAdapter
+            // 
+            this.estudianteTableAdapter.ClearBeforeFill = true;
+            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnClear);
             this.panel1.Controls.Add(this.txtCarrer);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtPhoneNumber);
@@ -159,112 +162,15 @@
             this.panel1.Size = new System.Drawing.Size(715, 169);
             this.panel1.TabIndex = 1;
             // 
-            // btnAdd
+            // btnClear
             // 
-            this.btnAdd.Location = new System.Drawing.Point(16, 131);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "Agregar";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(97, 131);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 1;
-            this.btnUpdate.Text = "Modificar";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(178, 131);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 2;
-            this.btnDelete.Text = "Eliminar";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // Codigo
-            // 
-            this.Codigo.AutoSize = true;
-            this.Codigo.Location = new System.Drawing.Point(17, 16);
-            this.Codigo.Name = "Codigo";
-            this.Codigo.Size = new System.Drawing.Size(40, 13);
-            this.Codigo.TabIndex = 3;
-            this.Codigo.Text = "Codigo";
-            // 
-            // txtCode
-            // 
-            this.txtCode.Location = new System.Drawing.Point(20, 32);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(97, 20);
-            this.txtCode.TabIndex = 4;
-            // 
-            // txtNames
-            // 
-            this.txtNames.Location = new System.Drawing.Point(140, 32);
-            this.txtNames.Name = "txtNames";
-            this.txtNames.Size = new System.Drawing.Size(171, 20);
-            this.txtNames.TabIndex = 6;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(137, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Nombres";
-            // 
-            // txtLastNames
-            // 
-            this.txtLastNames.Location = new System.Drawing.Point(330, 32);
-            this.txtLastNames.Name = "txtLastNames";
-            this.txtLastNames.Size = new System.Drawing.Size(171, 20);
-            this.txtLastNames.TabIndex = 8;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(327, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Apellidos";
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(520, 32);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(171, 20);
-            this.txtEmail.TabIndex = 10;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(517, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Correo";
-            // 
-            // txtPhoneNumber
-            // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(19, 86);
-            this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(97, 20);
-            this.txtPhoneNumber.TabIndex = 12;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 70);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Telefono";
+            this.btnClear.Location = new System.Drawing.Point(616, 131);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 15;
+            this.btnClear.Text = "Limpiar ";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // txtCarrer
             // 
@@ -282,6 +188,118 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "Carrera";
             // 
+            // txtPhoneNumber
+            // 
+            this.txtPhoneNumber.Location = new System.Drawing.Point(19, 86);
+            this.txtPhoneNumber.Name = "txtPhoneNumber";
+            this.txtPhoneNumber.Size = new System.Drawing.Size(97, 20);
+            this.txtPhoneNumber.TabIndex = 12;
+            this.txtPhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhoneNumber_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(16, 70);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Telefono";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(520, 32);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(171, 20);
+            this.txtEmail.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(517, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Correo";
+            // 
+            // txtLastNames
+            // 
+            this.txtLastNames.Location = new System.Drawing.Point(330, 32);
+            this.txtLastNames.Name = "txtLastNames";
+            this.txtLastNames.Size = new System.Drawing.Size(171, 20);
+            this.txtLastNames.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(327, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Apellidos";
+            // 
+            // txtNames
+            // 
+            this.txtNames.Location = new System.Drawing.Point(140, 32);
+            this.txtNames.Name = "txtNames";
+            this.txtNames.Size = new System.Drawing.Size(171, 20);
+            this.txtNames.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(137, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Nombres";
+            // 
+            // txtCode
+            // 
+            this.txtCode.Location = new System.Drawing.Point(20, 32);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(97, 20);
+            this.txtCode.TabIndex = 4;
+            this.txtCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCode_KeyPress);
+            // 
+            // Codigo
+            // 
+            this.Codigo.AutoSize = true;
+            this.Codigo.Location = new System.Drawing.Point(17, 16);
+            this.Codigo.Name = "Codigo";
+            this.Codigo.Size = new System.Drawing.Size(40, 13);
+            this.Codigo.TabIndex = 3;
+            this.Codigo.Text = "Codigo";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(178, 131);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(97, 131);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 1;
+            this.btnUpdate.Text = "Modificar";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(16, 131);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "Agregar";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -289,12 +307,13 @@
             this.ClientSize = new System.Drawing.Size(742, 394);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgwStudents);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "CRUD Estudiantes";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwStudents)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estudiantesBDDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.estudianteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estudiantesBDDataSet)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -329,6 +348,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtPhoneNumber;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 
